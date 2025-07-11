@@ -280,7 +280,7 @@ function App() {
   marginTop: "auto"
 }}>
   <p>
-   Copyright  © 2025 | Department of IT, Thiagarajar College of Engineering, Madurai - 625 015, Tamilnadu, India.
+   Copyright  © 2025 | Department of IT, Thiagarajar College of Engineering, Madurai - 625 015, Tamil Nadu, India.
   </p>
   <p>
     Source: <a href="https://kvnthirumoolar.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#ffe0b2" }}>
