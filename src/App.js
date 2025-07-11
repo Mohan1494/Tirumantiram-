@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
 
 const uyirList = ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஔ"];
-const meiList = ["க்", "ங்", "ச்", "ஞ்", "ட்", "ண்", "த்", "ந்", "ப்", "ம்", "ய்", "ர்", "ல்", "ள்", "ற்", "ன்", "வ்", "ழ்"];
+const meiList = ["க்", "ங்", "ச்", "ஞ்", "ட்", "ண்", "த்", "ந்", "ப்", "ம்", "ய்","வ்", "ர்", "ல்","ழ்", "ள்", "ற்", "ன்"];
 
 const uyirmeiMap = {
   "க்": ["க", "கா", "கி", "கீ", "கு", "கூ", "கெ", "கே", "கை", "கொ", "கோ", "கௌ"],
@@ -16,8 +16,10 @@ const uyirmeiMap = {
   "ப்": ["ப", "பா", "பி", "பீ", "பு", "பூ", "பெ", "பே", "பை", "பொ", "போ", "பௌ"],
   "ம்": ["ம", "மா", "மி", "மீ", "மு", "மூ", "மெ", "மே", "மை", "மொ", "மோ", "மௌ"],
   "ய்": ["ய", "யா", "யி", "யீ", "யு", "யூ", "யெ", "யே", "யை", "யொ", "யோ", "யௌ"],
+  "வ்": ["வ", "வா", "வி", "வீ", "வு", "வூ", "வெ", "வே", "வை", "வொ", "வோ", "வௌ"],
   "ர்": ["ர", "ரா", "ரி", "ரீ", "ரு", "ரூ", "ரெ", "ரே", "ரை", "ரொ", "ரோ", "ரௌ"],
   "ல்": ["ல", "லா", "லி", "லீ", "லு", "லூ", "லெ", "லே", "லை", "லொ", "லோ", "லௌ"],
+  "ழ்": ["ழ", "ழா", "ழி", "ழீ", "ழு", "ழூ", "ழெ", "ழே", "ழை", "ழொ", "ழோ", "ழௌ"],
   "ள்": ["ள", "ளா", "ளி", "ளீ", "ளு", "ளூ", "ளெ", "ளே", "ளை", "ளொ", "ளோ", "ளௌ"],
   "ற்": ["ற", "றா", "றி", "றீ", "று", "றூ", "றெ", "றே", "றை", "றொ", "றோ", "றௌ"],
   "ன்": ["ன", "னா", "னி", "னீ", "னு", "னூ", "னெ", "னே", "னை", "னொ", "னோ", "னௌ"]
@@ -265,20 +267,22 @@ function App() {
       )}
 
       <footer style={{
-        backgroundColor: "#8B0000",
-        color: "#fff",
-        padding: "20px",
-        textAlign: "center",
-        fontSize: "16px",
-        marginTop: "auto"
-      }}>
-        <p>
-          Source: <a href="https://kvnthirumoolar.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#ffe0b2" }}>
-            திருமூலர் அருளிய திருமந்திரம்
-          </a>
-        </p>
-        <p>Google Translator</p>
-      </footer>
+  backgroundColor: "#8B0000",
+  color: "#fff",
+  padding: "20px",
+  textAlign: "center",
+  fontSize: "16px",
+  marginTop: "auto"
+}}>
+  <p>Developed by</p>
+  <p>Department of IT, Thiagarajar College of Engineering, Madurai - 625 015, Tamilnadu, India.</p>
+  <p>
+    Source: <a href="https://kvnthirumoolar.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#ffe0b2" }}>
+      திருமூலர் அருளிய திருமந்திரம்
+    </a> | Google Translator
+  </p>
+</footer>
+
     </div>
   );
 }
