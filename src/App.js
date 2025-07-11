@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
 
 const uyirList = ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஔ"];
-const meiList = ["க்", "ங்", "ச்", "ஞ்", "ட்", "ண்", "த்", "ந்", "ப்", "ம்", "ய்","வ்", "ர்", "ல்","ழ்", "ள்", "ற்", "ன்"];
+const meiList = ["க்", "ங்", "ச்", "ஞ்", "ட்", "ண்", "த்", "ந்", "ப்", "ம்", "ய்", "ர்","ல்","வ்","ழ்", "ள்", "ற்", "ன்"];
 
 const uyirmeiMap = {
   "க்": ["க", "கா", "கி", "கீ", "கு", "கூ", "கெ", "கே", "கை", "கொ", "கோ", "கௌ"],
@@ -104,9 +104,14 @@ function App() {
   flexDirection: "column"
 }}>
   <img
-    src="/logo.png"  // ✅ Put your college logo in the public folder with this name
+    src="/logo.png" // ✅ Ensure logo.png is in the public folder
     alt="College Logo"
-    style={{ height: "60px", marginBottom: "10px" }}
+    style={{
+      height: "100px",           // ⬆️ Increased size
+      maxWidth: "100%",          // ⚖️ Makes sure it scales well
+      objectFit: "contain",      // ✅ Maintains aspect ratio
+      marginBottom: "10px"
+    }}
   />
   <h1 style={{
     margin: 0,
@@ -274,14 +279,16 @@ function App() {
   fontSize: "16px",
   marginTop: "auto"
 }}>
-  <p>Developed by</p>
-  <p>Department of IT, Thiagarajar College of Engineering, Madurai - 625 015, Tamilnadu, India.</p>
+  <p>
+   Copyright  © 2025 | Department of IT, Thiagarajar College of Engineering, Madurai - 625 015, Tamilnadu, India.
+  </p>
   <p>
     Source: <a href="https://kvnthirumoolar.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#ffe0b2" }}>
       திருமூலர் அருளிய திருமந்திரம்
     </a> | Google Translator
   </p>
 </footer>
+
 
     </div>
   );
