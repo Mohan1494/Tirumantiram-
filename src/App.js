@@ -1,5 +1,7 @@
 import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
+import googleTransliterate from 'google-input-tool';
+
 
 const uyirList = ["அ", "ஆ", "இ", "ஈ", "உ", "ஊ", "எ", "ஏ", "ஐ", "ஒ", "ஓ", "ஔ"];
 const meiList = ["க்", "ங்", "ச்", "ஞ்", "ட்", "ண்", "த்", "ந்", "ப்", "ம்", "ய்", "ர்","ல்","வ்","ழ்", "ள்", "ற்", "ன்"];
@@ -41,6 +43,8 @@ function App() {
   const [expandedSongs, setExpandedSongs] = useState(new Set());
   const [activeLanguages, setActiveLanguages] = useState({});
   const inputRef = useRef(null);
+  const [suggestions, setSuggestions] = useState([]);
+
 
   useEffect(() => {
     fetch("/songs.json")
@@ -54,6 +58,25 @@ function App() {
     setExpandedSongs(new Set());
     setActiveLanguages({});
   };
+  const fetchSuggestions = (text) => {
+  if (!text.trim()) {
+    setSuggestions([]);
+    return;
+  }
+
+  const xhr = new XMLHttpRequest();
+  googleTransliterate(xhr, text, "ta-t-i0-und", 5)
+    .then((res) => {
+      if (res.length > 0) {
+        setSuggestions(res[0]); // array of suggestions
+      } else {
+        setSuggestions([]);
+      }
+    })
+    .catch(() => {
+      setSuggestions([]);
+    });
+};
 
   const toggleSong = (id) => {
     setExpandedSongs(prev => {
@@ -139,7 +162,12 @@ function App() {
     type="text"
     value={query}
     onClick={() => setShowKeyboard(true)}
-    onChange={e => setQuery(e.target.value)}
+    onChange={(e) => {
+  const newText = e.target.value;
+  setQuery(newText);
+  fetchSuggestions(newText);
+}}
+
     onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
     placeholder="சொல்லை உள்ளிடவும்"
     style={{ flex: 1, padding: "10px", fontSize: "16px" }}
@@ -147,6 +175,40 @@ function App() {
   <button onClick={handleSearch} style={{ padding: "10px 16px", fontSize: "16px" }}>
     தேடு
   </button>
+  {suggestions.length > 0 && (
+  <div style={{
+    position: "relative",
+    backgroundColor: "#fff",
+    border: "1px solid #ccc",
+    borderRadius: "5px",
+    marginTop: "-10px",
+    marginBottom: "10px",
+    maxWidth: "600px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    zIndex: 2
+  }}>
+    {suggestions.map((s, i) => (
+      <div
+        key={i}
+        onClick={() => {
+          setQuery(s);
+          setSuggestions([]);
+          inputRef.current?.focus();
+        }}
+        style={{
+          padding: "8px 12px",
+          cursor: "pointer",
+          borderBottom: i !== suggestions.length - 1 ? "1px solid #eee" : "none",
+          backgroundColor: "#fafafa"
+        }}
+      >
+        {s}
+      </div>
+    ))}
+  </div>
+)}
+
 </div>
 
 
